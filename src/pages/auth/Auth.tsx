@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { usePuterStore } from "../../../lib/puter";
+import { usePuterStore } from "../../lib/puter";
 import { useEffect } from "react";
 
 const Auth = () => {

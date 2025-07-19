@@ -1,7 +1,7 @@
 import {Route, Routes} from "react-router-dom";
 import './App.css'
 import HomePage from "./pages/home/HomePage";
-import Auth from "./pages/home/auth/Auth";
+import Auth from "./pages/auth/Auth";
 import { usePuterStore } from "./lib/puter";
 import { useEffect } from "react";
 
