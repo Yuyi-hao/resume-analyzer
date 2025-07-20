@@ -5,8 +5,10 @@ import { usePuterStore } from "../../lib/puter";
 import { convertPdfToImage } from "../../lib/pdf2img";
 import { generateUUID } from "../../lib/utils";
 import { prepareInstructions } from "../../constants";
+import { useNavigate } from "react-router-dom";
 
 const UploadPage = () => {
+    const navigate = useNavigate();
     const {auth, isLoading, fs, ai, kv} = usePuterStore();
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState('');
@@ -57,9 +59,9 @@ const UploadPage = () => {
         const feedbackText = typeof(feedback.message.content)==='string'?feedback.message.content:feedback.message.content[0];
 
         data.feedback = JSON.parse(feedbackText.text);
-        await kv.set(`resume${uuid}`, JSON.stringify(data));
+        await kv.set(`resume:${uuid}`, JSON.stringify(data));
         setStatusText('Analysis Complete');
-        console.log(data);
+        navigate(`/resume/review/${uuid}`)
     }
 
     const handleSubmit = (event:FormEvent<HTMLFormElement>) => {
