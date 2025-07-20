@@ -6,3 +6,7 @@ export const formateFileSize = (fileSize: number) => {
 
     return parseFloat((fileSize/Math.pow(k, unit)).toFixed(2))+' '+sizes[unit];
 }
+
+export function generateUUID(){
+    return crypto.randomUUID();
+}
